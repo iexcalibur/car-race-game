@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(#4CAF50, #2E7D32);
+}
+
+.road {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 400px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: #333;
+  border: 5px solid #222;
+}
+
+.lane {
+  position: absolute;
+  width: 10px;
+  height: 50px;
+  background: white;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: move-lane 2s linear infinite;
+}
+
+@keyframes move-lane {
+  0% {
+    top: -50px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.car {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 50px;
+  height: 100px;
+  transform: translateX(-50%);
+  background: red;
+  border-radius: 5px;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #ff9900;
+}
+
+.houses {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 0;
+  gap: 20px;
+}
+
+.houses-left {
+  right: calc(50% + 220px);
+}
+
+.houses-right {
+  left: calc(50% + 220px);
+}
+
+.house {
+  width: 100px;
+  height: 120px;
+  background: #ff6b6b;
+  position: relative;
+  border: 2px solid #333;
+}
+
+.house::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  background: #2d3436;
+}
+
+.houses > .house:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 20px;
+  background: #808080;
+  z-index: 1;
+}
+
+.score-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.score {
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.game-over {
+  font-size: 36px;
+  color: red;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.coin {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: gold;
+  border-radius: 50%;
+  border: 2px solid #b58900;
+  animation: moveDown 3s linear;
+}
+
+.hole {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #000;
+  border-radius: 50%;
+  border: 4px solid #333;
+  animation: moveDown 3s linear;
+}
+
+@keyframes moveDown {
+  from {
+    top: -50px;
+  }
+  to {
+    top: 100vh;
+  }
+} 
